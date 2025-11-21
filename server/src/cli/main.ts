@@ -3,6 +3,7 @@
 import figlet from "figlet"
 import chalk from "chalk"
 import { Command, program} from "commander"
+import { login } from "./commands/auth/login"
 
 async function main(){
     console.log(
@@ -18,6 +19,7 @@ async function main(){
 
     const program = new Command("nobita") // creating new command
     program.version("0.0.1").description("nobita CLI - A CLI based AI Tool")
+        .addCommand(login)
 
     program.action(()=>{
         program.help()
@@ -28,5 +30,5 @@ async function main(){
 
 main().catch(err=>{
     console.log(chalk.red("Error running nobita CLI: ", err))
-    process.exit(1)
+    process.exit(0)
 })
